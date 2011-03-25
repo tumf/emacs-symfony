@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : log info
+#group : symfony
+# --
+sfLogger::getInstance()->info(sprintf("{%s} %s",__CLASS__,"${1:message}"));

@@ -1,0 +1,8 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : Action
+#group : symfony
+# --
+public function execute${1:name}()
+{
+    $0
+}

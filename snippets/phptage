@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : <?php echo "" ?>
+# --
+<?php echo "${1:message}" ?>$0
+

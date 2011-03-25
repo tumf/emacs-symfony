@@ -1,0 +1,4 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : $this->getRequestParameter(...)
+# --
+$this->getRequestParameter(${1:param})$0

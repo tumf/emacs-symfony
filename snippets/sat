@@ -1,0 +1,5 @@
+#contributor : Yu Ichikawa (TamaC.2008@gmail.com)
+#name : $this->getUser()->setAttribute(...)
+#group : symfony
+# --
+$this->getUser()->setAttribute(${1:param}, ${2:param})$0

@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : log err
+#group : symfony
+# --
+sfLogger::getInstance()->err(sprintf("{%s} %s",__CLASS__,"${1:message}"));

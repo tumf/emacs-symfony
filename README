@@ -1,0 +1,226 @@
+= emacs-symfony =
+
+emacs用[wiki:emacs-symfony symfony-mode]の開発プロジェクトです
+
+ * svn http://svn.tracfort.jp/svn/dino-symfony/emacs-symfony/emacs-symfony
+
+emacs-railsのキーワードを置換して作っています。
+
+ * [http://blog.symfony.jp/2007/08/13/emacs-etags/ symfonyで開発日記の関連エントリ]
+
+
+== 必要なもの ==
+
+ * lighttpd
+ * SQL-mode
+ * PHP_Shell (from PEAR: pear install channel://pear.php.net/PHP_Shell-0.3.0)
+ * symfony plugins
+   * sfConfigurePlugin
+   * sfLighttpdPlugin
+   * sfSubversionPlugin (optional)
+   (付属のキックスタートスクリプトではこれらがplugin-installされるようになっています。)
+
+== インストール ==
+
+to be done...
+ 
+== 今できる事 ==
+
+== スクリーンキャスト ==
+
+=== [http://screencast.com/t/YehrTQewESd デモその1] ===
+
+ * プロジェクト生成〜ウェブサーバの起動
+ * ドキュメントの検索
+ * プラグインのインストール/チェックアウト
+
+
+=== Find ===
+
+ * symfony-find:app
+ * symfony-find:module
+
+ * symfony-find:configs (configディレクトリを開く)
+ * symfony-find:libs    (libディレクトリを開く)
+ * symfony-find:helpers (lib/helperディレクトリを開く)
+
+ * symfony-find:action (C-c C-c f a)
+ 
+=== 生成 ===
+
+ * symfony-create:project 
+ * symfony-create:app 
+ * symfony-create:module
+ * symfony-create:controller
+ 
+=== プラグイン ===
+
+ * symfony-plugin:install
+ * symfony-plugin:checkout
+ 
+=== ナビゲーション ===
+
+ * symfony-nav:goto-models (C-c C-c g m)
+ 
+=== テスト ===
+
+ * symfony-run-tests (C-c C-c t) allのみ (名称は変える予定)
+
+=== configure ===
+
+ * symfony-configure:append
+ * symfony-configure:again
+
+=== Webサーバ ===
+
+
+ * symfony-configure:start
+ * symfony-configure:start-recent (C-c C-c w s)
+ * symfony-configure:stop
+ 
+=== SQL ===
+
+ * symfony-sql:open (C-c C-c s s)
+ データベースが複数の時選べない
+
+=== インタラクティブシェル ===
+
+ * symfony-isf:shell (C-c C-c C-i)
+ 
+=== propel ===
+
+ * symfony-propel:build-all (C-c C-c C-p)
+
+=== Subversion ===
+
+ * symfony-svn:status-into-root
+ 
+=== symfony task ===
+
+ * symfony-task:cc (#48)
+
+=== その他 ===
+
+ * symfony-create-tags (C-c C-c C-t)
+ 
+ 
+ 
+ * [http://tracfort.jp/projects/dino-symfony/browser/emacs-symfony/emacs-symfony/symfony-snippets.el snippets]
+ 
+ その他...
+ 
+== これからやる事 ==
+    
+ * symfony-propel:build-db (これは無理目)
+   
+ * symfony-find:apps (#41)
+ 
+ * autoinsert (#24)
+ * symfony-find:project (#30)
+ * symfony-find:components (#31)
+ * symfony-find:actions (#32)
+
+ * symfony-find:component (#33)
+ * symfony-find:view (#34)
+ * symfony-find:layout (#35)
+ * symfony-find:partial (#36)
+ * symfony-find:schema (#37)
+ * symfony-find:validator (#38)
+ * symfony-find:sql (#39)
+ * symfony-find:batch (#40)
+ 
+  
+ * symfony-find:helper (#42)
+ * symfony-create:class (#54)
+ * symfony-find:class (#55)
+ * symfony-find:class-filter (#43)
+ * symfony-find:class-validator (#44)
+ 
+ * symfony-find:routing (#45)
+ * symfony-find:javascript (#46)
+ * symfony-find:css (#47)
+ * symfony-find:i18n-messages
+ 
+ * symfony-i18n:extract
+
+ * symfony-nav:goto-modules (C-c C-c g o)
+ * symfony-nav:goto-actions (C-c C-c g a)
+ * symfony-nav:goto-templates (C-c C-c g t) 
+ * symfony-nav:goto-plugins (#49, C-c C-c g p)
+   
+ * symfony-configure:bootstrap
+ * symfony-configure:user-profile
+ 
+ * symfony-ws:find-access-log
+ * symfony-ws:find-error-log
+ 
+ * symfony-svn:checkout-zendframework
+ * symfony-svn:externals
+ 
+ * symfony-propel:build-model (#50)
+ * symfony-propel:build-db
+ * symfony-propel:build-all-load (#51)
+
+ * symfony-sql:query (#52)
+
+=== minor modes ===
+
+ * symfony-actions-minor-mode
+ * symfony-view-minor-mode
+ * symfony-components-minor-mode
+ * symfony-partial-minor-mode
+ * symfony-layout-minor-mode
+ 
+
+== 自分用設定 ==
+
+=== ~/.emacs.d/conf/init-symfony.el ===
+
+{{{
+;; symfony mode のテスト用
+(add-to-list 'load-path "~/projects/emacs-symfony")
+(defun try-complete-abbrev (old)
+  (if (expand-abbrev) t nil))
+
+(setq hippie-expand-try-functions-list
+  '(try-complete-abbrev
+    try-complete-file-name
+    try-expand-dabbrev))
+(require 'symfony)
+(global-set-key "\C-c\C-csfn" 'symfony-create:project)
+
+;;(global-set-key "\C-c\C-csff" 'symfony-find:project)
+
+(setq symfony-tags-command "~/bin/etags-sf %s")
+
+(setq symfony-doc:api-index-url-list
+      (cons '("http://tracfort.jp/projects/dino-symfony?format=txt"
+     (lambda ()
+       (when (re-search-forward
+	      "\\[wiki:\\([-a-zA-Z0-9_]+\\)\\]" nil t)
+	 (buffer-substring  (match-beginning 1) (match-end 1))))
+     (lambda (url s)
+       (concat "http://tracfort.jp/projects/dino-symfony/wiki/" s)))
+	    symfony-doc:api-index-url-list))
+}}}
+
+=== ~/bin/etags-sf ===
+
+C-cC-cC-tでタグを作り直します。そのときに走らせるコマンド。
+ctagsは http://hp.vector.co.jp/authors/VA025040/ctags/ を使っています。
+
+{{{
+#!/bin/sh
+/usr/local/bin/ctags -e --exclude="cache" --langmap=PHP:.php --php-types=c+f+d --jcode=utf8 --etags-include=/Users/tumf/share/tags/SF_TAGS -R
+}}}
+
+
+
+=== ~/bin/update-sf_tags ===
+
+symfonyを~/lib/php/symfony にチェックアウトして使っています。そのソースコードを元に~/share/tags/SF_TAGSにTAGSを作ります。
+
+{{{
+#!/bin/sh
+find ~/lib/php/symfony -name "*.php" |xargs ctags --langmap=PHP:.php --php-types=c+f+d -e -f ~/share/tags/SF_TAGS
+}}}

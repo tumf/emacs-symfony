@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : $this->forward(...)
+#group : symfony
+# --
+$this->forward(${1:route})

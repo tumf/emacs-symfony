@@ -1,0 +1,8 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : if sfRequest::POST
+#group : symfony
+# --
+if($this->getRequest()->getMethod() == sfRequest::POST){
+    $0
+}
+

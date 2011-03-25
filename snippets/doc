@@ -1,0 +1,8 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name: Doc Comment
+# --
+/**
+ * ${title}
+ * 
+ * @return ${return}
+ */

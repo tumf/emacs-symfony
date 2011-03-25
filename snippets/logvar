@@ -1,0 +1,4 @@
+#name : log variable
+#group : symfony
+# --
+sfLogger::getInstance()->debug(sprintf("{%s} %s",__CLASS__,var_export(\$${var},true)));

@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : log crit
+#group : symfony
+# --
+sfLogger::getInstance()->crit(sprintf("{%s} %s",__CLASS__,"${1:message}"));

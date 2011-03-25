@@ -1,0 +1,4 @@
+#contributor : Yu ICHIKAWA (tamac.2008@gmail.com)
+#name : $this->getRequest()->
+# --
+$this->getRequest()->$0

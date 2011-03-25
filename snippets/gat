@@ -1,0 +1,5 @@
+#contributor : Yu Ichikawa (TamaC.2008@gmail.com)
+#name : $this->getUser()->getAttribute(...)
+#group : symfony
+# --
+$this->getUser()->getAttribute(${1:param})$0

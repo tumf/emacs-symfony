@@ -1,0 +1,8 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : foreach($arr as $value){...}
+# --
+foreach (${1:array} as \$${2:value}){
+    $0
+}
+
+

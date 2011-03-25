@@ -1,0 +1,5 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : throw 
+#group : symfony
+# --
+throw new sfException("${1:message}");

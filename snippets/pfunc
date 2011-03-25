@@ -1,0 +1,7 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : public function(...)
+# --
+public function ${1:name}(${2:arg})
+{
+    $0
+}

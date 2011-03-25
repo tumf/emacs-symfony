@@ -1,0 +1,6 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : $crit = new Criteria;
+#group : symfony
+# --
+$crit = new Criteria;$0
+

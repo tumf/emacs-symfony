@@ -1,0 +1,16 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#group: symfony
+#name: Doc Test
+# --
+/**
+ * ${title}
+ * 
+ *
+ * #test ${test}
+ * <code>
+ * 
+ * </code>
+ * 
+ * @return ${return}
+ */
+

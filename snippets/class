@@ -1,0 +1,7 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : class
+# --
+class ${1:name} extends ${2:parent}
+{
+    $0
+}

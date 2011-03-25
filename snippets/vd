@@ -1,0 +1,4 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : var_dump
+# --
+var_dump(${var});

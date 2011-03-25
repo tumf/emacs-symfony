@@ -1,0 +1,7 @@
+#contributor : Yoshihiro TAKAHARA (y.takahara@gmail.com)
+#name : static function(...)
+# --
+static function ${1:name}(${2:arg})
+{
+    $0
+}

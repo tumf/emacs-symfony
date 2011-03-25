@@ -1,0 +1,41 @@
+## Buffer Type
+actions
+model
+batch
+config
+module
+actions
+action
+template
+layout
+components
+component
+routing
+
+## 自分用設定
+
+### ~/.emacs.d/conf/init-symfony.el
+
+{{{
+;; symfony mode のテスト用
+(add-to-list 'load-path "~/projects/emacs-symfony")
+(defun try-complete-abbrev (old)
+  (if (expand-abbrev) t nil))
+
+(setq hippie-expand-try-functions-list
+  '(try-complete-abbrev
+    try-complete-file-name
+    try-expand-dabbrev))
+(require 'symfony)
+(global-set-key "\C-c\C-cj" 'symfony-create-project)
+
+(setq symfony-tags-command "~/bin/etags-sf %s")
+}}}
+
+### ~/bin/etags-sf
+
+{{{
+#!/bin/sh
+ctags -e --langmap=PHP:.php --php-types=c+f+d --jcode=utf8 --etags-include=/Users/tumf/share/tags/SF_TAGS -R
+}}}
+
